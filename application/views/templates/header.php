@@ -10,6 +10,7 @@
 
     <title>1JutaDomain Status Dashboard</title>
 
+    <link href="<?php echo base_url('assets'); ?>/css/norm.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets'); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
