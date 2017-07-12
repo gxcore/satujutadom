@@ -1,7 +1,16 @@
 
 
+			</div><!-- /.col main -->			
+		</div><!-- /.row main -->
     </div><!-- /.container -->
-
+	
+	<footer class="fixed-bottom">
+		<div class="container">
+			<div>
+      <a class="navbar-brand text-right" href="https://www.kominfo.go.id" targeet="_blank">
+		<img src="<?php echo base_url('assets'); ?>/images/kominfo-logo-white.png" alt="KOMINFO" height="35"></a> 2017 &copy; <a href="https://www.kominfo.go.id" targeet="_blank">KOMINFO</a> for 1 Juta Domain</div>
+		</div>
+	</footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

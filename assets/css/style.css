@@ -1,5 +1,23 @@
+/* COLOR HEX
+//  #26145e -- dark blue
+//  #015198 -- blue
+//  #0085c6 -- light blue
+//
+//
+//
+*/
+
 body {
   padding-top: 5rem;
+  padding-bottom: 8rem;
+}
+
+a {
+	color: #0085c6;
+}
+.image-block {
+	display: block;
+	max-width: 100%;
 }
 
 /** LOGIN **/
@@ -36,4 +54,45 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+
+/* HEADER */
+
+nav.navbar {
+	background: #015198;
+	color: #ffffff;
+}
+
+
+/* FOOTER */
+
+footer {
+	background: #26145e;
+	padding: 1em 25px;
+	color: #ffffff;
+}
+
+a.button-dl {
+    white-space: normal;
+    text-align: left;
+    padding: 1em 1em 1em 3em;
+    position: relative;
+	margin-bottom: 0.2em;
+	display: block;
+}
+.btn-group-vertical > a.button-dl {
+	margin-bottom: 0;
+}
+
+a.button-dl > i.fa {
+    position: absolute;
+    top: 50%;
+    left: 0.5em;
+    font-size: 30px;
+    margin-top: -15px;
+}
+
+#accordion .card-header a {
+    display: block;
 }
