@@ -4,6 +4,7 @@ class login extends CI_Model {
 
 	public function __construct() {
 		$this->load->database();
+		$this->load->library('session');
 	}
 	
 	public function get_login_data($user_data =  null) {
@@ -47,12 +48,12 @@ class login extends CI_Model {
 			
 			if ( $count > 0 ) {
 				$u = $this->db->get_where( 'user', array( 'email' => $username, 'password' => md5($password) ) )->row_array();
-				if ($u['status']) {
+				if ($u['status'] == 1) {
 					return $this->login->set_login_data( $u['id'] );
 				} else {
 					return 2;
 				}
-			} else {
+			} else {				
 				return 1;
 			}
 		}

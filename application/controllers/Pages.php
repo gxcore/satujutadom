@@ -5,8 +5,11 @@ class Pages extends CI_Controller {
 	
 		parent::__construct();
 		$this->load->helper('url_helper');
-		//$this->load->database();		
-		//$this->load->model('login');
+		$this->load->library('session');
+		$this->load->library('SmartGrid/Smartgrid');
+		$this->load->model('facilitator');
+		$this->load->database();		
+		$this->load->model('facilitator');
 		//$this->load->model('data_model');
 		//$this->load->model('report_model');
 		//require FCPATH.'assets/phpmailer/PHPMailerAutoload.php';
@@ -79,10 +82,25 @@ class Pages extends CI_Controller {
 			$data['page_filename'] = $page;
 			$data['title'] = ucwords(str_replace("-"," ",$page));
 			//$data['logged_user'] = $logged;
-
-			if ($page != 'login') { $this->load->view('templates/header', $data); } else { $this->load->view('templates/header-clean', $data); }
-			$this->load->view('pages/'.$page, $data);
-			if ($page != 'login') { $this->load->view('templates/footer', $data); } else { $this->load->view('templates/footer-clean', $data); }
+			if ($this->session->userdata('user')){				
+				$this->load->view('templates/header-clean', $data);
+				if ($page == 'facilitator'){
+					//$data['facilitator'] = $this->facilitator->get_all();
+					/* $sql = "SELECT * FROM facilitator";
+					$columns = array("id"=>array("header"=>"Facilitator ID", "type"=>"label"),
+													"full_name"=>array("header"=>"Full Name", "type"=>"label"));
+					$this->smartgrid->set_grid($sql,$columns);
+					$data['grid_html'] =$this->smartgrid->render_grid(); */
+					$data['grid_html'] = $this->facilitator->get_grid();
+				}
+				$this->load->view('pages/'.$page,$data);
+				$this->load->view('templates/footer-clean');
+			}
+			else{
+				if ($page != 'login') { $this->load->view('templates/header', $data); } else { $this->load->view('templates/header-clean', $data); }
+				$this->load->view('pages/'.$page, $data);
+				if ($page != 'login') { $this->load->view('templates/footer', $data); } else { $this->load->view('templates/footer-clean', $data); }
+			}
 		
 		//}
 		
