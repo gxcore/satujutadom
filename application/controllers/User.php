@@ -6,6 +6,7 @@ class User extends CI_Controller {
 		parent::__construct();
 		$this->load->model('login');
 		$this->load->helper('url_helper');
+		$this->load->library('session');
 			
 	}
 	
@@ -14,12 +15,13 @@ class User extends CI_Controller {
 		
 		$logged_in = $this->login->log_in($this->input->post('username'), $this->input->post('password'), $this->input->post('remember'));
 		
-		if ( $logged_in && is_array($logged_in)) {
-			$redir = ($this->input->post('redirect')) ? $this->input->post('redirect') : base_url('home');
+		/* if ( $logged_in && is_array($logged_in)) { */
+		if ( $logged_in) { // 20170722 | ilhabibi | take out kondisi kedua is_array karena gak ngerti maksudnya buat apa kondisi ini
+			$redir = ($this->input->post('redirect')) ? $this->input->post('redirect') : base_url('dashboard'); // 20170722 | ilhabibi | di redirect ke halaman dashboard
 			header('Location: '.$redir);
 		} else {
 			header( 'Location: '.base_url('login').'?redirect='.$this->input->post('redirect').'&fail='.$logged_in );
-		}
+		} 
 	}
 	
 	public function logout() {

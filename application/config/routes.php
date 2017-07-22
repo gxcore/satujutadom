@@ -57,4 +57,3 @@ $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'pages/view';
 
 $route['(:any)/(:any)'] = 'pages/view/$1/$2';
-$route['(:any)'] = 'pages/view/$1';
