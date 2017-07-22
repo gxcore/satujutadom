@@ -76,13 +76,21 @@ footer {
 a.button-dl {
     white-space: normal;
     text-align: left;
-    padding: 1em 1em 1em 3em;
     position: relative;
 	margin-bottom: 0.2em;
 	display: block;
 }
-.btn-group-vertical > a.button-dl {
-	margin-bottom: 0;
+
+a.button-dl.btn-lg {
+    padding: 1em 1em 1em 3em;
+}
+
+a.button-dl.btn-md {
+    padding: 1em 1em 1em 4em;
+}
+
+.accordion a.button-dl.btn-md {
+    padding: 0.3em 0.3em 0.3em 4em;
 }
 
 a.button-dl > i.fa {
@@ -91,8 +99,14 @@ a.button-dl > i.fa {
     left: 0.5em;
     font-size: 30px;
     margin-top: -15px;
+	width: 1em;
+	text-align: center;
+}
+.btn-group-vertical > a.button-dl {
+	margin-bottom: 0;
 }
 
 #accordion .card-header a {
     display: block;
 }
+
