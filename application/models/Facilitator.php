@@ -34,8 +34,13 @@ class facilitator extends CI_Model {
 	}
 	
 	public function get_all(){
+		$count = $this->db->count_all("facilitator");	
+		
 		$query = $this->db->get("facilitator");
-		return $query->result_array();			
+		//return $query->result_array();			
+		$data['data'] = $query->result();
+		$data['total'] = $count;
+		return $data;
 	}
 	
 	public function get_by_name($name){

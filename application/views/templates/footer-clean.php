@@ -13,11 +13,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	
-    <script src="<?php echo base_url('assets'); ?>/js/script.js"></script>
-	<script>
-	
-	</script>
-	
+    <script src="<?php echo base_url('assets'); ?>/js/script.js"></script>		
 	<?php echo ( file_exists( FCPATH.'assets/js/custom-js-'.$page_filename.'.js' ) ) ? '<script src="'.base_url('assets').'/js/custom-js-'.$page_filename.'.js"></script>' : ''; ?>
 	
 	

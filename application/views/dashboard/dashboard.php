@@ -5,16 +5,16 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('facilitator'); ?>">Facilitator<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="<?php echo base_url('dashboard/facilitator'); ?>">Facilitator<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('requestor'); ?>">Requestor</a>
+            <a class="nav-link" href="<?php echo base_url('dashboard/requestor'); ?>">Requestor</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('lokasi'); ?>">Lokasi</a>
+            <a class="nav-link" href="<?php echo base_url('dashboard/lokasi'); ?>">Lokasi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('status'); ?>">Setup Status</a>
+            <a class="nav-link" href="<?php echo base_url('dashboard/status'); ?>">Setup Status</a>
           </li>          
         </ul>        
       </div>
