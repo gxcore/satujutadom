@@ -5,8 +5,11 @@ class Pages extends CI_Controller {
 	
 		parent::__construct();
 		$this->load->helper('url_helper');
-		//$this->load->database();		
-		//$this->load->model('login');
+		$this->load->library('session');
+		$this->load->library('SmartGrid/Smartgrid');
+		$this->load->model('facilitator');
+		$this->load->database();		
+		$this->load->model('facilitator');
 		//$this->load->model('data_model');
 		//$this->load->model('report_model');
 		//require FCPATH.'assets/phpmailer/PHPMailerAutoload.php';
@@ -51,9 +54,7 @@ class Pages extends CI_Controller {
 	}
 	
 	
-	public function view($page = 'home', $page2 = 'home') {
-		
-		$page = ($page == 'admin') ? $page.'/'.$page2 : $page;
+	public function view($page = 'home') {
 	
 		//$logged = $this->login->get_login_data();
 		//echo '<pre style="padding: 60px 20px 20px 280px;">';
@@ -73,9 +74,7 @@ class Pages extends CI_Controller {
 				
 			}
 		*/
-		
 			if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php')) {
-					echo APPPATH.'views/pages/'.$page.'.php';
 					show_404();
 			}
 
@@ -83,10 +82,10 @@ class Pages extends CI_Controller {
 			$data['page_filename'] = $page;
 			$data['title'] = ucwords(str_replace("-"," ",$page));
 			//$data['logged_user'] = $logged;
-
 			if ($page != 'login') { $this->load->view('templates/header', $data); } else { $this->load->view('templates/header-clean', $data); }
 			$this->load->view('pages/'.$page, $data);
 			if ($page != 'login') { $this->load->view('templates/footer', $data); } else { $this->load->view('templates/footer-clean', $data); }
+			
 		
 		//}
 		

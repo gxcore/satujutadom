@@ -23,8 +23,11 @@ class requestor extends CI_Model {
 	}
 	
 	public function get_all(){
+		$count = $this->db->count_all("facilitator");	
 		$query = $this->db->get("requestor");
-		return $query->result_array();			
+		$data['data'] = $query->result();
+		$data['total'] = $count;
+		return $data;
 	}
 	
 	public function get_by_name($name){
@@ -38,6 +41,6 @@ class requestor extends CI_Model {
 		$query = $this->db->get_where("requestor",array("id" => $id));
 		return $query->result_array();
 	}
-	
+}
 	
 ?>

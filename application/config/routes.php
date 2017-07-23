@@ -53,8 +53,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
 $route['default_controller'] = 'pages/view';
-
+$route['dashboard/get_facilitator'] = 'dashboard/view_facilitator';
+$route['dashboard/get_requestor'] = 'dashboard/view_requestor';
+$route['dashboard/insert_facilitator'] = 'dashboard/insert_facilitator';
+$route['dashboard/insert_requestor'] = 'dashboard/insert_requestor';
+$route['dashboard/(:any)'] = 'dashboard/view/$1';
+$route['dashboard'] = 'dashboard/view';
 $route['(:any)'] = 'pages/view/$1';
-$route['(:any)/(:any)'] = 'pages/view/$1/$2';
