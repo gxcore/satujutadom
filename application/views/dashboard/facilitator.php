@@ -12,11 +12,13 @@
   	<div class="col-lg-12 margin-tb">
   	  <div class="pull-left">
   	    <h2>Facilitator Dashboard</h2>
-  	  </div>
-  	  <div class="pull-right">
-  	    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item"> Create Item</button>
-  	  </div>
+  	  </div>  	  
   	</div>
+	<div class="col-lg-12 margin-tb">
+		<div class="pull-left">
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item"> Add Facilitator</button>
+		</div>
+	</div<
 </div>
 
 <table class="table table-bordered">

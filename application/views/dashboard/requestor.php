@@ -12,11 +12,13 @@
   	<div class="col-lg-12 margin-tb">
   	  <div class="pull-left">
   	    <h2>Requestor Master Data</h2>
-  	  </div>
-  	  <div class="pull-right">
+  	  </div>  	  
+  	</div>
+	<div class="col-lg-12 margin-tb">
+		<div class="pull-left">
   	    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-item"> Add Requestor</button>
   	  </div>
-  	</div>
+	</div>
 </div>
 
 <table class="table table-bordered">

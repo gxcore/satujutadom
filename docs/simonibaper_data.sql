@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2017 at 06:54 AM
+-- Generation Time: Jul 24, 2017 at 06:56 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -33,6 +33,20 @@ CREATE TABLE IF NOT EXISTS `facilitator` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `facilitator`
+--
+
+TRUNCATE TABLE `facilitator`;
+--
+-- Dumping data for table `facilitator`
+--
+
+INSERT INTO `facilitator` (`id`, `full_name`) VALUES
+(1, 'Unggul Sagena'),
+(12, 'Miftah Hadi'),
+(14, 'Yeyen Yanuarizk');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +60,11 @@ CREATE TABLE IF NOT EXISTS `provinces` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Provinsi';
 
+--
+-- Truncate table before insert `provinces`
+--
+
+TRUNCATE TABLE `provinces`;
 -- --------------------------------------------------------
 
 --
@@ -61,6 +80,11 @@ CREATE TABLE IF NOT EXISTS `regencies` (
   KEY `province_id` (`province_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Kota / Kabupaten';
 
+--
+-- Truncate table before insert `regencies`
+--
+
+TRUNCATE TABLE `regencies`;
 -- --------------------------------------------------------
 
 --
@@ -81,6 +105,11 @@ CREATE TABLE IF NOT EXISTS `request` (
   KEY `regency_id` (`regency_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `request`
+--
+
+TRUNCATE TABLE `request`;
 -- --------------------------------------------------------
 
 --
@@ -95,6 +124,19 @@ CREATE TABLE IF NOT EXISTS `requestor` (
   `company` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Requestor Perorangan / UMKM';
+
+--
+-- Truncate table before insert `requestor`
+--
+
+TRUNCATE TABLE `requestor`;
+--
+-- Dumping data for table `requestor`
+--
+
+INSERT INTO `requestor` (`id`, `ktp_number`, `full_name`, `company`) VALUES
+(1, '327', 'Unit', 'Murah Mareh'),
+(5, '322', 'Puttie M', 'Bogoriginal');
 
 -- --------------------------------------------------------
 
@@ -113,6 +155,11 @@ CREATE TABLE IF NOT EXISTS `request_statuses` (
   KEY `status_id` (`status_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `request_statuses`
+--
+
+TRUNCATE TABLE `request_statuses`;
 -- --------------------------------------------------------
 
 --
@@ -126,6 +173,11 @@ CREATE TABLE IF NOT EXISTS `sets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `sets`
+--
+
+TRUNCATE TABLE `sets`;
 -- --------------------------------------------------------
 
 --
@@ -139,6 +191,11 @@ CREATE TABLE IF NOT EXISTS `set_status_groups` (
   PRIMARY KEY (`set_id`,`status_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `set_status_groups`
+--
+
+TRUNCATE TABLE `set_status_groups`;
 -- --------------------------------------------------------
 
 --
@@ -154,6 +211,11 @@ CREATE TABLE IF NOT EXISTS `status` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Status atau Stage atau Tahapan ex: Verifikasi Data';
 
+--
+-- Truncate table before insert `status`
+--
+
+TRUNCATE TABLE `status`;
 -- --------------------------------------------------------
 
 --
@@ -168,6 +230,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Truncate table before insert `user`
+--
+
+TRUNCATE TABLE `user`;
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `status`) VALUES
+(1, 'admin@1jutadomain.com', '5858ea228cc2edf88721699b2c8638e5', 1);
 
 --
 -- Constraints for dumped tables
