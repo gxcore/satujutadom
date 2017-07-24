@@ -18,14 +18,10 @@ class facilitator extends CI_Model {
 		//$last_id = $this->db->insert_id();		
 	}
 	
-	public function update($d){
-		$data = array(
-			'id' => $d['id'],
-			'full_name' => $d['full_name']
-		);
-		
+	public function update($data){
+				
 		$this->db->set($data);
-		$this->db->where("id",$d['id']);
+		$this->db->where("id",$data['id']);
 		$this->db->update("facilitator",$data);
 	}
 	

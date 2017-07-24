@@ -85,7 +85,7 @@
             <form data-toggle="validator" action="" method="put">
 
                 <div class="form-group">
-                    <label class="control-label" for="title">ID:</label>
+                    <label class="control-label" for="title">Full Name</label>
                     <input type="text" name="full_name" class="form-control" data-error="Please enter full_name." required />
                     <div class="help-block with-errors"></div>
                 </div>

@@ -92,6 +92,15 @@ class Dashboard extends CI_Controller {
 		$this->view_requestor();
 	}
 	
+	public function edit_facilitator($id){
+		$data = array(
+			'id' => $id,
+			'full_name' => $this->input->post("full_name")
+		);
+		$this->facilitator->update($data);
+		$this->view_requestor();
+	}
+	
 	
 	
 	

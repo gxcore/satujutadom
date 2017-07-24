@@ -119,12 +119,12 @@ $("body").on("click",".remove-item",function(){
 $("body").on("click",".edit-item",function(){
 
     var id = $(this).parent("td").data('id');
-    var title = $(this).parent("td").prev("td").prev("td").text();
-    var description = $(this).parent("td").prev("td").text();
+    var full_name = $(this).parent("td").prev("td").text();
+    //var description = $(this).parent("td").prev("td").text();
 
-    $("#edit-item").find("input[full_name='full_name']").val(title);
+    $("#edit-item").find("input[name='full_name']").val(full_name);
     //$("#edit-item").find("textarea[name='description']").val(description);
-    $("#edit-item").find("form").attr("action",url + '/update/' + id);
+    $("#edit-item").find("form").attr("action",'edit_facilitator/' + id);
 
 });
 
@@ -134,7 +134,7 @@ $(".crud-submit-edit").click(function(e){
     e.preventDefault();
 
     var form_action = $("#edit-item").find("form").attr("action");
-    var title = $("#edit-item").find("input[name='full_name']").val();
+    var full_name = $("#edit-item").find("input[name='full_name']").val();
     //var description = $("#edit-item").find("textarea[name='description']").val();
 
     $.ajax({
