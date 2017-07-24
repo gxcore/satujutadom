@@ -15,16 +15,13 @@ class facilitator extends CI_Model {
 		);
 		
 		$this->db->insert("facilitator",$data);				
+		//$last_id = $this->db->insert_id();		
 	}
 	
-	public function update($d){
-		$data = array(
-			'id' => $d['id'],
-			'full_name' => $d['full_name']
-		);
-		
+	public function update($data){
+				
 		$this->db->set($data);
-		$this->db->where("id",$d['id']);
+		$this->db->where("id",$data['id']);
 		$this->db->update("facilitator",$data);
 	}
 	
@@ -34,23 +31,19 @@ class facilitator extends CI_Model {
 	}
 	
 	public function get_all(){
+		$count = $this->db->count_all("facilitator");	
+		
 		$query = $this->db->get("facilitator");
-		return $query->result_array();			
+		//return $query->result_array();			
+		$data['data'] = $query->result();
+		$data['total'] = $count;
+		return $data;
 	}
 	
 	public function get_by_name($name){
 		$full_name = "%".strtolower($name)."%";
 		$q = "SELECT * FROM facilitator WHERE lower(full_name) LIKE ?";
 		$query = $this->db->query($q,array($full_name));
-	}
-	
-	public function get_grid(){
-		$sql = "SELECT * FROM facilitator";
-		$columns = array("id"=>array("header"=>"Facilitator ID", "type"=>"label"),
-                 "full_name"=>array("header"=>"Full Name", "type"=>"label"));
-		$this->smartgrid->set_grid($sql,$columns);
-		return $this->smartgrid->render_grid();
-				 
 	}
 	
 }

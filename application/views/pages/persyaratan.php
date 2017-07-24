@@ -1,12 +1,12 @@
 	
 	<h1>Persyaratan</h1>
 	<p>Persyaratan penerima program adalah sebagai berikut:</p>
-	<div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
+	<div id="accordion" role="tablist" aria-multiselectable="true">
 	  <div class="card">
 		<div class="card-header" role="tab" id="headingOne">
 		  <h5 class="mb-0">
-			<a class="button-dl btn-md" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-			  <i class="fa fa-shopping-cart" aria-hidden="true"></i> UMKM
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			  UMKM
 			</a>
 		  </h5>
 		</div>
@@ -33,8 +33,8 @@
 	  <div class="card">
 		<div class="card-header" role="tab" id="headingTwo">
 		  <h5 class="mb-0">
-			<a class="button-dl btn-md collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-			  <i class="fa fa-graduation-cap" aria-hidden="true"></i> Sekolah
+			<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			  Sekolah
 			</a>
 		  </h5>
 		</div>
@@ -60,8 +60,8 @@
 	  <div class="card">
 		<div class="card-header" role="tab" id="headingThree">
 		  <h5 class="mb-0">
-			<a class="button-dl btn-md collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-			  <i class="fa fa-map-marker" aria-hidden="true"></i> Desa
+			<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+			  Desa
 			</a>
 		  </h5>
 		</div>
@@ -84,8 +84,8 @@
 	  <div class="card">
 		<div class="card-header" role="tab" id="headingFour">
 		  <h5 class="mb-0">
-			<a class="button-dl btn-md collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-			  <i class="fa fa-users" aria-hidden="true"></i> Komunitas
+			<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+			  Komunitas
 			</a>
 		  </h5>
 		</div>
