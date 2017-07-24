@@ -75,7 +75,7 @@ class Pages extends CI_Controller {
 		*/
 		
 			if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php')) {
-					echo APPPATH.'views/pages/'.$page.'.php';
+					//echo APPPATH.'views/pages/'.$page.'.php';
 					show_404();
 			}
 
