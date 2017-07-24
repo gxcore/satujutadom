@@ -124,12 +124,14 @@ $("body").on("click",".remove-item",function(){
 $("body").on("click",".edit-item",function(){
 
     var id = $(this).parent("td").data('id');
-    var title = $(this).parent("td").prev("td").prev("td").text();
-    var description = $(this).parent("td").prev("td").text();
+    var ktp_number = $(this).parent("td").prev("td").prev("td").prev("td").text();
+	var full_name = $(this).parent("td").prev("td").prev("td").text();
+    var company = $(this).parent("td").prev("td").text();
 
-    $("#edit-item").find("input[full_name='full_name']").val(title);
-    //$("#edit-item").find("textarea[name='description']").val(description);
-    $("#edit-item").find("form").attr("action",url + '/update/' + id);
+    $("#edit-item").find("input[name='ktp_number']").val(ktp_number);
+    $("#edit-item").find("input[name='full_name']").val(full_name);
+	$("#edit-item").find("input[name='company']").val(company);
+    $("#edit-item").find("form").attr("action",'edit_requestor/' + id);
 
 });
 
@@ -139,21 +141,19 @@ $(".crud-submit-edit").click(function(e){
     e.preventDefault();
 
     var form_action = $("#edit-item").find("form").attr("action");
-    var title = $("#edit-item").find("input[name='full_name']").val();
-    //var description = $("#edit-item").find("textarea[name='description']").val();
-
-    $.ajax({
+    var ktp_number = $("#edit-item").find("input[name='ktp_number']").val();
+	var full_name = $("#edit-item").find("input[name='full_name']").val();
+	var company = $("#edit-item").find("input[name='company']").val();    
+	
+    $.ajax({		
         dataType: 'json',
         type:'POST',
-        url: form_action,
-        //data:{title:title, description:description}
-		data:{full_name:full_name}
+        url: form_action,     
+		data:{ktp_number:ktp_number,full_name:full_name,company:company}				
     }).done(function(data){
-
         getPageData();
         $(".modal").modal('hide');
         toastr.success('Item Updated Successfully.', 'Success Alert', {timeOut: 5000});
 
     });
-
 });

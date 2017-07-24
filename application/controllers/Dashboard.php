@@ -76,8 +76,7 @@ class Dashboard extends CI_Controller {
 				'ktp_number' =>	$this->input->post("ktp_number"),
 				'full_name' =>	$this->input->post("full_name"),
 				'company' =>	$this->input->post("company")
-		);
-		
+		);		
 		$this->requestor->insert_requestor($data);
 		$this->view_requestor();
 	}
@@ -98,6 +97,17 @@ class Dashboard extends CI_Controller {
 			'full_name' => $this->input->post("full_name")
 		);
 		$this->facilitator->update($data);
+		$this->view_facilitator();
+	}
+	
+	public function edit_requestor($id){
+		$data = array(
+			'id' => $id,
+			'ktp_number' => $this->input->post("ktp_number"),
+			'full_name' => $this->input->post("full_name"),
+			'company' => $this->input->post("company")
+		);		
+		$this->requestor->update($data);
 		$this->view_requestor();
 	}
 	

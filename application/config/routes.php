@@ -59,6 +59,7 @@ $route['dashboard/get_requestor'] = 'dashboard/view_requestor';
 $route['dashboard/insert_facilitator'] = 'dashboard/insert_facilitator';
 $route['dashboard/insert_requestor'] = 'dashboard/insert_requestor';
 $route['dashboard/edit_facilitator'] = 'dashboard/edit_facilitator';
+$route['dashboard/edit_requestor'] = 'dashboard/edit_requestor';
 $route['dashboard/(:any)'] = 'dashboard/view/$1';
 $route['dashboard'] = 'dashboard/view';
 $route['(:any)'] = 'pages/view/$1';

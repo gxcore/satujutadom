@@ -91,11 +91,11 @@
             <form data-toggle="validator" action="" method="put">
 
                 <div class="form-group">
-                    <label class="control-label" for="title">No KTP</label>
+                    <label class="control-label" for="ktp_number">No KTP</label>
                     <input type="text" name="ktp_number" class="form-control" data-error="Please enter KTP No." required />
-					<label class="control-label" for="title">Full Name</label>
+					<label class="control-label" for="full_name">Full Name</label>
 					<input type="text" name="full_name" class="form-control" data-error="Please enter full name." required />
-					<label class="control-label" for="title">UKM Name/Company</label>
+					<label class="control-label" for="company">UKM Name/Company</label>
 					<input type="text" name="company" class="form-control" data-error="Please enter UKM name." required />
                     <div class="help-block with-errors"></div>
                 </div>                

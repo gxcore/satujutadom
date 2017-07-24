@@ -11,9 +11,9 @@ class requestor extends CI_Model {
 		$this->db->insert("requestor",$data);				
 	}
 	
-	public function update_requestor($id,$data){
+	public function update($data){
 		$this->db->set($data);
-		$this->db->where("id",$id);
+		$this->db->where("id",$data['id']);
 		$this->db->update("requestor",$data);
 	}
 	
