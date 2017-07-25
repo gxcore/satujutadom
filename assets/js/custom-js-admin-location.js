@@ -13,7 +13,7 @@ function initCap(string) {
 function manageData(){	   
    $.ajax({
       dataType: 'json',	  
-      url: 'get_provinces',	        
+      url: '../dashboard/view_location',	        
     }).done(function(data){
 	   /* for(k=0;k<data.length;k++){
 			alert("Index: " + k + " value: " + data[k]);
@@ -21,7 +21,7 @@ function manageData(){
        total_page = data.total % 5;
        current_page = page;	   
 	   
-       $('#pagination').twbsPagination({
+       $('nav ul.pagination').twbsPagination({
             totalPages: total_page,
             visiblePages: current_page,
             onPageClick: function (event, pageL) {
@@ -45,7 +45,7 @@ function getPageData() {
 
     $.ajax({
        dataType: 'json',
-       url: 'get_provinces',
+       url: '../dashboard/view_location',
        data: {page:page}
 	}).done(function(data){
 
@@ -68,7 +68,7 @@ function manageRow(data) {
 		rows = rows + '<td data-id="'+value.id+'">';		
         rows = rows + '<button data-toggle="modal" data-target="#edit-item" class="btn btn-primary edit-item">Edit</button> ';
         rows = rows + '<button class="btn btn-danger remove-item">Delete</button>';		
-		rows = rows + '<button class="btn btn-secondary edit-item">Detail</button>';		
+		rows = rows + '<button class="btn btn-secondary view-item"><a href="regencies?id='+value.id+'">View Detail</a></button>';		
         rows = rows + '</td>';
         rows = rows + '</tr>';
 
@@ -101,6 +101,10 @@ $(".crud-submit").click(function(e){
 
 });
 
+$("body").on("click","view-item",function(){
+	alert("click");
+});
+
 /* Remove Item */
 $("body").on("click",".remove-item",function(){
 
@@ -110,7 +114,7 @@ $("body").on("click",".remove-item",function(){
     $.ajax({
         dataType: 'json',
         type:'delete',
-        url: 'delete_provinces' + '/' + id,
+        url: '../dashboard/delete_provinces' + '/' + id,
     }).done(function(data){
 
         c_obj.remove();
@@ -130,7 +134,7 @@ $("body").on("click",".edit-item",function(){
 
     $("#edit-item").find("input[name='province_name']").val(province_name);
     //$("#edit-item").find("textarea[name='description']").val(description);
-    $("#edit-item").find("form").attr("action",'edit_provinces/' + id);
+    $("#edit-item").find("form").attr("action",'../dashboard/edit_provinces/' + id);
 
 });
 

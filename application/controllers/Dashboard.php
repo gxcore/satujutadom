@@ -31,6 +31,8 @@ class Dashboard extends CI_Controller {
 			$this->view_requestor();
 		}elseif($page == 'location'){
 			$this->view_location();
+		}elseif($page == "regencies"){
+			$this->view_regencies();
 		}
 		else{
 			null;
@@ -82,6 +84,24 @@ class Dashboard extends CI_Controller {
 		}		
 	}
 	
+	public function view_regencies(){
+	  	
+       //$this->db->limit(5, ($this->input->get("page",1) - 1) * 5);       
+	    $id = $this->input->get("id");
+		//echo $id;
+		//$id = 11;
+		//$data = $this->location->get_all_regencies();	
+		$data = $this->location->get_reg_by_id($id);
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  
+		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+		/* your ajax here code will go here */
+		header('Content-type: application/json');
+		echo json_encode($data);
+		exit();
+		}	 
+	}
+	
+	
 	public function insert_facilitator(){
 		$fname = $this->input->post("full_name");
 		$this->facilitator->insert_facilitator($fname);
@@ -108,6 +128,16 @@ class Dashboard extends CI_Controller {
 		$this->view_location();
 	}
 	
+	public function insert_regencies(){
+		$data = array(
+				'id' => null,
+				'province_id' => $this->input->get("id"),
+				'name' => $this->input->post("name")
+		);
+		$this->location->insert_regencies($data);
+		$this->view_regencies();
+	}
+	
 	public function delete_facilitator($id){
 		$this->facilitator->delete($id);
 		$this->view_facilitator();
@@ -123,6 +153,11 @@ class Dashboard extends CI_Controller {
 		$this->view_location();
 	}
 	
+	public function delete_regencies($id){
+		$this->location->delete_regencies($id);
+		$this->view_regencies();
+	}
+	
 	public function edit_facilitator($id){
 		$data = array(
 			'id' => $id,
@@ -131,8 +166,6 @@ class Dashboard extends CI_Controller {
 		$this->facilitator->update($data);
 		$this->view_facilitator();
 	}
-	
-	
 	
 	public function edit_requestor($id){
 		$data = array(
@@ -152,6 +185,15 @@ class Dashboard extends CI_Controller {
 		);		
 		$this->location->update_provinces($data);
 		$this->view_location();
+	}
+	
+	public function edit_regencies($id){
+		$data = array(
+			'id' => $id,			
+			'name' => $this->input->post("name")			
+		);		
+		$this->location->update_regencies($data);
+		$this->view_regencies();
 	}
 	
 	

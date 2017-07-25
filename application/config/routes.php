@@ -62,15 +62,9 @@ $route['dashboard/insert_facilitator'] = 'dashboard/insert_facilitator';
 $route['dashboard/insert_requestor'] = 'dashboard/insert_requestor';
 $route['dashboard/insert_provinces'] = 'dashboard/insert_provinces';
 $route['dashboard/edit_facilitator'] = 'dashboard/edit_facilitator';
-<<<<<<< HEAD
 $route['dashboard/edit_requestor'] = 'dashboard/edit_requestor';
 $route['dashboard/edit_provinces'] = 'dashboard/edit_provinces';
 $route['dashboard/(:any)'] = 'dashboard/view/$1';
-$route['dashboard'] = 'dashboard/view';
-=======
-$route['dashboard/edit_requestor'] = 'dashboard/edit_requestor'; */
-//$route['dashboard/(:any)'] = 'pages/view/dashboard/$1';
-//$route['dashboard'] = 'dashboard/view';
+$route['dashboard'] = 'dashboard/view';*/
 $route['admin/(:any)'] = 'pages/view/admin/$1';
->>>>>>> 3ae5bda43934ba5f7bf4c53db43f60897df186a5
 $route['(:any)'] = 'pages/view/$1';

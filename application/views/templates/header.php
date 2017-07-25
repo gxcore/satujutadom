@@ -96,6 +96,9 @@
 						<a class="nav-link" href="<?php echo base_url('admin/requestor'); ?>">Pengaturan Requestor</a>
 					  </li>
 					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/location'); ?>">Pengaturan Lokasi</a>
+					  </li>
+					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/manage_status'); ?>">Pengaturan Status</a>
 					  </li>
 					  <li class="nav-item">

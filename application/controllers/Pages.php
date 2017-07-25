@@ -82,8 +82,9 @@ class Pages extends CI_Controller {
 			//$data['mail'] = $this->send_mail();
 			$data['page_filename'] = $page;
 			$data['title'] = ucwords(str_replace("-"," ",$page));
-			$data['logged_user'] = $logged;
-
+			$data['logged_user'] = $logged;			
+			$data['id'] = $this->input->get("id");	
+	
 			if ($page != 'login') { $this->load->view('templates/header', $data); } else { $this->load->view('templates/header-clean', $data); }
 			$this->load->view('pages/'.$page, $data);
 			if ($page != 'login') { $this->load->view('templates/footer', $data); } else { $this->load->view('templates/footer-clean', $data); }
