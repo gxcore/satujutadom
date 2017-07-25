@@ -44,6 +44,15 @@ class facilitator extends CI_Model {
 		$full_name = "%".strtolower($name)."%";
 		$q = "SELECT * FROM facilitator WHERE lower(full_name) LIKE ?";
 		$query = $this->db->query($q,array($full_name));
+		return $query->result();
+	}
+	
+	public function search_by_name($name){
+		$full_name = "%".strtolower($name)."%";
+		$q = "SELECT id,full_name name FROM facilitator WHERE lower(full_name) LIKE ?";
+		$data['data'] = $this->db->query($q,array($full_name))->result();
+		$data['total'] = 0;
+		return $data;
 	}
 	
 }

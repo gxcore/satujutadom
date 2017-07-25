@@ -88,6 +88,9 @@
 					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/status'); ?>">Pengkinian Status</a>
 					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/register'); ?>">Pendaftaran</a>
+					  </li>
 					  <li class=""><hr></li>
 					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/facilitator'); ?>">Pengaturan Fasilitator</a>

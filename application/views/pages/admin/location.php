@@ -17,7 +17,7 @@
 	    <tr>
 		      <th>ID</th>
 		      <th>Provinces</th>			  
-		      <th width="200px">Action</th>
+		      <th width="300px">Action</th>
 	    </tr>
 	</thead>
 

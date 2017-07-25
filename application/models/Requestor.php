@@ -8,7 +8,8 @@ class requestor extends CI_Model {
 	}
 	
 	public function insert_requestor($data){				
-		$this->db->insert("requestor",$data);				
+		$this->db->insert("requestor",$data);
+		return $this->db->insert_id();	
 	}
 	
 	public function update($data){

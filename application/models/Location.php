@@ -72,5 +72,14 @@ class location extends CI_Model {
 		$data['total'] = $count;
 		return $data;					
 	}	
+	
+	public function search_prov_by_name($name){
+		$full_name = "%".strtolower($name)."%";
+		$q = "SELECT id,name FROM provinces";// WHERE lower(name) LIKE ?";
+		$data['data'] = $this->db->query($q,array($name))->result();
+		$data['total'] = 0;
+		
+		return $data;
+	}
 }	
 ?>

@@ -17,7 +17,7 @@
 	    <tr>
 		      <th>ID</th>
 		      <th>Regency</th>			  
-		      <th width="200px">Action</th>
+		      <th width="400px">Action</th>
 	    </tr>
 	</thead>
 
