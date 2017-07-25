@@ -51,14 +51,16 @@ class Pages extends CI_Controller {
 	
 	public function view($page = 'home', $page2 = 'home') {
 		
+		$dir_temp = $page;
 		$page = ($page == 'admin') ? $page.'/'.$page2 : $page;
 	
+		
 		$logged = $this->login->get_login_data();
 		//echo '<pre style="padding: 60px 20px 20px 280px;">';
 		//print_r($logged);
 		//echo "</pre>";
 		
-		if ( explode("/",$page)[0] == 'dashboard' && !$logged ) {
+		if ( ($dir_temp == 'admin') && !$logged ) {
 		
 			header( 'Location: '.base_url('').'?redirect='."http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" );
 			

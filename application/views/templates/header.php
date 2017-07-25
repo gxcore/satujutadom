@@ -13,6 +13,7 @@
     <link href="<?php echo base_url('assets'); ?>/css/norm.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets'); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!--link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"-->
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets'); ?>/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url('assets'); ?>/css/style.css" rel="stylesheet">
@@ -88,6 +89,12 @@
 						<a class="nav-link" href="<?php echo base_url('admin/status'); ?>">Pengkinian Status</a>
 					  </li>
 					  <li class=""><hr></li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/facilitator'); ?>">Pengaturan Fasilitator</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/requestor'); ?>">Pengaturan Requestor</a>
+					  </li>
 					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/manage_status'); ?>">Pengaturan Status</a>
 					  </li>
