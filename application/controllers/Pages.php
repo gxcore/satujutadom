@@ -5,10 +5,8 @@ class Pages extends CI_Controller {
 	
 		parent::__construct();
 		$this->load->helper('url_helper');
-		//$this->load->database();		
-		//$this->load->model('login');
-		//$this->load->model('data_model');
-		//$this->load->model('report_model');
+		$this->load->database();		
+		$this->load->model('login');
 		//require FCPATH.'assets/phpmailer/PHPMailerAutoload.php';
 	}
 	
@@ -53,26 +51,28 @@ class Pages extends CI_Controller {
 	
 	public function view($page = 'home', $page2 = 'home') {
 		
+		$dir_temp = $page;
 		$page = ($page == 'admin') ? $page.'/'.$page2 : $page;
 	
-		//$logged = $this->login->get_login_data();
-		//echo '<pre style="padding: 60px 20px 20px 280px;">';
-		//print_r($this->login->get_login_data());
-		//echo "</pre>";
-		/*
-		if ( $page != 'login' && !$logged ) {
 		
-			header( 'Location: '.base_url('login').'?redirect='."http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" );
+		$logged = $this->login->get_login_data();
+		//echo '<pre style="padding: 60px 20px 20px 280px;">';
+		//print_r($logged);
+		//echo "</pre>";
+		
+		if ( ($dir_temp == 'admin') && !$logged ) {
+		
+			header( 'Location: '.base_url('').'?redirect='."http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" );
 			
 		} else {
-		
+			/*
 			if ( $page == 'login' && $logged ) {
 			
 				header( 'Location: '.base_url('home') );
 				return 0;
 				
 			}
-		*/
+			*/
 		
 			if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php')) {
 					//echo APPPATH.'views/pages/'.$page.'.php';
@@ -82,13 +82,13 @@ class Pages extends CI_Controller {
 			//$data['mail'] = $this->send_mail();
 			$data['page_filename'] = $page;
 			$data['title'] = ucwords(str_replace("-"," ",$page));
-			//$data['logged_user'] = $logged;
+			$data['logged_user'] = $logged;
 
 			if ($page != 'login') { $this->load->view('templates/header', $data); } else { $this->load->view('templates/header-clean', $data); }
 			$this->load->view('pages/'.$page, $data);
 			if ($page != 'login') { $this->load->view('templates/footer', $data); } else { $this->load->view('templates/footer-clean', $data); }
 		
-		//}
+		}
 		
 	}
 }

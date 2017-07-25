@@ -8,11 +8,12 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php echo base_url('assets'); ?>/images/favicon.png">
 
-    <title>1JutaDomain Status Dashboard</title>
+    <title>1JutaDomain Status Dashboard | <?php echo $title; ?></title>
 
     <link href="<?php echo base_url('assets'); ?>/css/norm.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets'); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!--link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"-->
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets'); ?>/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url('assets'); ?>/css/style.css" rel="stylesheet">
@@ -42,14 +43,17 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('unduh'); ?>">Unduh</a>
           </li>
-          <!--li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+		  <?php if ( $logged_user ) : ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Admin </a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Home</a>
+              <a class="dropdown-item" href="#">Pengaturan Status</a>
+              <a class="dropdown-item" href="#">Pengaturan User</a>
+              <a class="dropdown-item" href="#">Pengaturan Master Data</a>
             </div>
-          </li-->
+          </li>
+		  <?php endif; ?>
         </ul>
         <!--form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Cari tentang">
@@ -61,34 +65,63 @@
 	<div class="container">
 		<div class="row main">
 			<div class="col-md-3 sidebar flex-last pl-lg-3 mt-3">
-				<h4>Masuk Sistem</h4>
-				<form class="form-signin p-0" action="<?php echo base_url('user/login'); ?>" method="post">
-					<label for="inputEmail" class="sr-only">Email address</label>
-					<input type="email" id="inputEmail" name="username" class="form-control" placeholder="username" required autofocus>
-					<label for="inputPassword" class="sr-only">Password</label>
-					<input type="password" id="inputPassword" name="password" class="form-control" placeholder="password" required>
-					<!--div class="checkbox">
-					  <label>
-						<input type="checkbox" value="remember-me" name="remember"> Tetap masuk
-					  </label>
-					</div-->
-					<button class="btn btn-md btn-primary btn-block" type="submit">Login</button>
-				</form>
-				<br>
-				<h4>Cek Status Bantuan</h4>
-				<form class="form-signin p-0" action="<?php echo base_url('check/by_requestor'); ?>" method="post">
-					<label for="nama" class="sr-only">Email address</label>
-					<input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Penerima Bantuan" required>
-					Atau
-					<label for="namafasil" class="sr-only">Email address</label>
-					<input type="text" id="namafasil" name="fasil" class="form-control mb-2" placeholder="Nama Fasilitator" required>
-					<!--div class="checkbox">
-					  <label>
-						<input type="checkbox" value="remember-me" name="remember"> Tetap masuk
-					  </label>
-					</div-->
-					<button class="btn btn-md btn-primary btn-block" type="submit">Cari</button>
-				</form>
+				<?php if ( !( $logged_user /*|| $admin_page*/) ) : ?>
+					<h4>Masuk Sistem</h4>
+					<form class="form-signin p-0" action="<?php echo base_url('user/login'); ?>" method="post">
+						<label for="inputEmail" class="sr-only">Email address</label>
+						<input type="email" id="inputEmail" name="username" class="form-control" placeholder="username" required autofocus>
+						<label for="inputPassword" class="sr-only">Password</label>
+						<input type="password" id="inputPassword" name="password" class="form-control" placeholder="password" required>
+						<!--div class="checkbox">
+						  <label>
+							<input type="checkbox" value="remember-me" name="remember"> Tetap masuk
+						  </label>
+						</div-->
+						<button class="btn btn-md btn-primary btn-block" type="submit">Login</button>
+					</form>
+				<?php else : ?>
+					<h4>Hi <?php echo explode('@', $logged_user->email)[0]; ?>,</h4>
+					<ul class="navbar-nav mr-auto">
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/home'); ?>">Beranda Admin<span class="sr-only">(current)</span></a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/status'); ?>">Pengkinian Status</a>
+					  </li>
+					  <li class=""><hr></li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/facilitator'); ?>">Pengaturan Fasilitator</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/requestor'); ?>">Pengaturan Requestor</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/manage_status'); ?>">Pengaturan Status</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('admin/manage_user'); ?>">Pengaturan User</a>
+					  </li>
+					  <li class=""><hr></li>
+					  <li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url('user/logout'); ?>">Log out</a>
+					  </li>
+					</ul>
+				<?php endif; ?>
+					<br>
+					<h4>Cek Status Bantuan</h4>
+					<form class="form-signin p-0" action="<?php echo base_url('check/by_requestor'); ?>" method="post">
+						<label for="nama" class="sr-only">Email address</label>
+						<input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Penerima Bantuan" required>
+						Atau
+						<label for="namafasil" class="sr-only">Email address</label>
+						<input type="text" id="namafasil" name="fasil" class="form-control mb-2" placeholder="Nama Fasilitator" required>
+						<!--div class="checkbox">
+						  <label>
+							<input type="checkbox" value="remember-me" name="remember"> Tetap masuk
+						  </label>
+						</div-->
+						<button class="btn btn-md btn-primary btn-block" type="submit">Cari</button>
+					</form>
 			</div>
 			
 			<div class="col-md-9 main flex-first mt-3">

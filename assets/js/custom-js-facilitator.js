@@ -9,7 +9,7 @@ manageData();
 function manageData(){	   
    $.ajax({
       dataType: 'json',	  
-      url: 'get_facilitator',	        
+      url: '../view_facilitator',	        
     }).done(function(data){
 
        total_page = data.total % 5;
@@ -39,7 +39,7 @@ function getPageData() {
 
     $.ajax({
        dataType: 'json',
-       url: 'get_facilitator',
+       url: '../dashboard/view_facilitator',
        data: {page:page}
 	}).done(function(data){
 
@@ -104,7 +104,7 @@ $("body").on("click",".remove-item",function(){
     $.ajax({
         dataType: 'json',
         type:'delete',
-        url: 'delete_facilitator' + '/' + id,
+        url: '../dashboard/delete_facilitator' + '/' + id,
     }).done(function(data){
 
         c_obj.remove();
@@ -124,7 +124,7 @@ $("body").on("click",".edit-item",function(){
 
     $("#edit-item").find("input[name='full_name']").val(full_name);
     //$("#edit-item").find("textarea[name='description']").val(description);
-    $("#edit-item").find("form").attr("action",'edit_facilitator/' + id);
+    $("#edit-item").find("form").attr("action",'../dashboard/edit_facilitator/' + id);
 
 });
 
