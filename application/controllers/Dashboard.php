@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
 		$this->load->database();
 		$this->load->model('facilitator');
 		$this->load->model('requestor');
+		$this->load->model('location');		
 	}
 	
 	public function view($page = null){
@@ -28,7 +29,10 @@ class Dashboard extends CI_Controller {
 			$this->view_facilitator();
 		}elseif($page == 'requestor'){
 			$this->view_requestor();
-		}else{
+		}elseif($page == 'location'){
+			$this->view_location();
+		}
+		else{
 			null;
 		}
 		
@@ -64,6 +68,20 @@ class Dashboard extends CI_Controller {
 		}		
 	}
 	
+	public function view_location(){
+	  	
+       //$this->db->limit(5, ($this->input->get("page",1) - 1) * 5);       
+	   
+		$data = $this->location->get_all_provinces();	
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  
+		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+		/* your ajax here code will go here */
+		header('Content-type: application/json');
+		echo json_encode($data);
+		exit();
+		}		
+	}
+	
 	public function insert_facilitator(){
 		$fname = $this->input->post("full_name");
 		$this->facilitator->insert_facilitator($fname);
@@ -81,6 +99,15 @@ class Dashboard extends CI_Controller {
 		$this->view_requestor();
 	}
 	
+	public function insert_provinces(){
+		$data = array(
+				'id' => null,
+				'name' => $this->input->post("name")
+		);
+		$this->location->insert_provinces($data);
+		$this->view_location();
+	}
+	
 	public function delete_facilitator($id){
 		$this->facilitator->delete($id);
 		$this->view_facilitator();
@@ -89,6 +116,11 @@ class Dashboard extends CI_Controller {
 	public function delete_requestor($id){
 		$this->requestor->delete($id);
 		$this->view_requestor();
+	}
+	
+	public function delete_provinces($id){
+		$this->location->delete_provinces($id);
+		$this->view_location();
 	}
 	
 	public function edit_facilitator($id){
@@ -100,6 +132,8 @@ class Dashboard extends CI_Controller {
 		$this->view_facilitator();
 	}
 	
+	
+	
 	public function edit_requestor($id){
 		$data = array(
 			'id' => $id,
@@ -110,6 +144,16 @@ class Dashboard extends CI_Controller {
 		$this->requestor->update($data);
 		$this->view_requestor();
 	}
+	
+	public function edit_provinces($id){
+		$data = array(
+			'id' => $id,
+			'name' => $this->input->post("name")			
+		);		
+		$this->location->update_provinces($data);
+		$this->view_location();
+	}
+	
 	
 	
 	
