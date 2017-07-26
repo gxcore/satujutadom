@@ -54,7 +54,11 @@ class request extends CI_Model {
 				}
 			}
 			$q['where'] = (count($q['where']) > 0) ? implode(' OR ', $q['where']) : ' 1 ';
+		}else
+		{
+			$q['where'] = ' 1 = 1 '; // add by ilhabibi 170726 | kondisi kalau form-nya gak diisi sama sekali
 		}
+		
 		$q['sql'] = "
 			SELECT r.id, rs.full_name AS req_name, rs.company, fc.full_name AS fac_name, lp.name AS prov, lr.name AS reg, 
 				(
