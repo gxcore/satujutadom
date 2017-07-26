@@ -321,6 +321,21 @@ class Dashboard extends CI_Controller {
 		$this->request->update_request_status($data);
 		$this->view_request();
 	}
+		
+	public function get_status_update_list(){
+		
+		$data = $this->request->get_request_status_set_by_id($this->input->post("id"));
+		
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  
+		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+		/* your ajax here code will go here */
+		header('Content-type: application/json');
+		echo json_encode($data);
+		exit();
+		}	
+	}
+	
+	
 	
 	
 }

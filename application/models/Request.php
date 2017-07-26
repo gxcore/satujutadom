@@ -53,7 +53,7 @@ class request extends CI_Model {
 					}
 				}
 			}
-			$q['where'] = implode(' OR ', $q['where']);
+			$q['where'] = (count($q['where']) > 0) ? implode(' OR ', $q['where']) : ' 1 ';
 		}
 		$q['sql'] = "
 			SELECT r.id, rs.full_name AS req_name, rs.company, fc.full_name AS fac_name, lp.name AS prov, lr.name AS reg, 
@@ -105,6 +105,16 @@ class request extends CI_Model {
 		$this->db->set('flag', 1);
 		$this->db->where( $data );
 		return $this->db->update("request_statuses");
+	}
+	
+	public function get_request_status_set_by_id($id){
+		$query = $this->db->query("
+			SELECT st.sequence, st.description, rs.flag
+			FROM request_statuses AS rs JOIN status AS st ON rs.status_id = st.id
+			WHERE rs.request_id = ?
+			ORDER BY st.sequence ASC
+		", array($id) );
+		return $query->result_array();
 	}
 }
 

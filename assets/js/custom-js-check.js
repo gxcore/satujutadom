@@ -36,7 +36,7 @@ function manageData(){
 
 /* Get Page Data*/
 function getPageData() {
-	console.log(queries);
+	//console.log(queries);
     $.ajax({
 		dataType: 'json',
 		type:'POST',
@@ -64,8 +64,8 @@ function manageRow(data) {
         rows = rows + '<td>'+value.fac_name+'</td>';
 		rows = rows + '<td>'+value.prov+' / <br><small>'+value.reg+'</small></td>';
         rows = rows + '<td data-id="'+value.id+'" data-st-id="'+value.status_next_id+'">';
-        rows = rows + '<big><span class="badge badge-pill badge-success btn-block">'+value.status+'</span><br>';
-        rows = rows + '<span class="badge badge-pill badge-warning btn-block"><i class="fa fa-arrow-right" aria-hidden="true"></i> '+value.status_next+'</span></big><br>';
+        rows = rows + '<a data-toggle="modal" data-target="#view-stat" class="view-detail-stat" href="#" title="klik untuk melihat detil status"><big><span class="badge badge-pill badge-success btn-block">'+value.status+'</span><br>';
+        rows = rows + '<span class="badge badge-pill badge-warning btn-block"><i class="fa fa-arrow-right" aria-hidden="true"></i> '+value.status_next+'</span></big></a><br>';
         rows = rows + '</td>';
         rows = rows + '</tr>';
 
@@ -74,6 +74,42 @@ function manageRow(data) {
     $("tbody").html(rows);
 
 }
+
+$("body").on("click","a.view-detail-stat",function(){
+	var m = $('.modal#view-stat');
+	var ids = $(this).parent("td").data();
+	var req = $(this).parent("td").prev("td").prev("td").prev("td").text();
+	var fac = $(this).parent("td").prev("td").prev("td").text();
+	var loc = $(this).parent("td").prev("td").text();
+	//console.log(ids);
+	m.find('.modal-title > span').text('Request #'+ids.id);
+	m.find('.modal-body').empty().append('<h5>'+req+'</h5>');
+	m.find('.modal-body').append('<h6>'+loc+'</h6>');
+	m.find('.modal-body').append('<h6>Fasilitator: '+fac+'</h6><p><br>Status permohonan:</p><div class="btn-group-vertical btn-block"></div>');
+	
+    $.ajax({
+        dataType: 'json',
+        type:'post',
+        url: 'dashboard/get_status_update_list',
+		data: { id: ids.id }
+    }).done(function(data){
+		prev = "1";
+		$.each( data, function( i, v ) {
+			flag = (v.flag == "1") ? 'btn-success' : 'btn-outline-primary';
+			check = (v.flag == "1") ? 'check-square-o' : 'square-o';
+			flag = (v.flag == "0" && prev == "1") ? 'btn-warning' : flag;
+			check = (v.flag == "0" && prev == "1") ? 'square' : check;
+			m.find('.modal-body .btn-group-vertical').append('<a class="btn '+flag+' btn-sm text-left" href="#"><i class="fa fa-'+check+'" aria-hidden="true"></i> '+v.description+'</a>');
+			prev = v.flag;
+		});
+
+    });
+	
+	
+	//<a class="button-dl btn btn-outline-info btn-md  text-left" href="http://localhost/1.Project-Ongoing/satujutadom/admin/status?cid=11012"><i class="fa fa-users" aria-hidden="true"></i>supra.biz.id</a>
+	
+	
+});
 
 $('form#lookupreq').submit( function(event) {
 	event.preventDefault();
@@ -153,3 +189,9 @@ $(".crud-submit-edit").click(function(e){
 
     });
 });
+
+
+
+if (typeof startlook !== 'undefined' && startlook) {
+    $('form#lookupreq').submit();
+}

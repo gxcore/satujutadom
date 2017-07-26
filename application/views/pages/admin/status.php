@@ -22,7 +22,7 @@
 				<label class="" for=""> Atau </label>
 			</div>
 			<div class="col-8">
-				<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="" name="q-reqname" placeholder="Nama Requestor / Company">
+				<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="" name="q-reqname" placeholder="Nama Requestor / Company" >
 			</div>
 			<div class="col-3 text-right p-1">
 				<label class="" for=""> Atau </label>
@@ -31,6 +31,7 @@
 				<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="" name="q-facname" placeholder="Nama Fasilitator">
 			</div>
 			<div class="col-12 text-right">
+				<button type="reset" class="btn btn-danger my-2 mr-0">Reset</button>
 				<button type="submit" class="btn btn-primary my-2 mr-0">Cari</button>
 			</div>
 		</form>

@@ -116,7 +116,7 @@
 				<?php endif; ?>
 					<br>
 					<h4>Cek Status Bantuan</h4>
-					<form class="form-signin p-0" action="<?php echo base_url('check'); ?>" method="post">
+					<form class="form-signin p-0" action="<?php echo base_url('check'); ?>" method="get">
 						<label for="nama" class="sr-only">Email address</label>
 						<input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Penerima Bantuan" >
 						Atau
