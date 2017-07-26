@@ -72,6 +72,7 @@
 						<input type="email" id="inputEmail" name="username" class="form-control" placeholder="username" required autofocus>
 						<label for="inputPassword" class="sr-only">Password</label>
 						<input type="password" id="inputPassword" name="password" class="form-control" placeholder="password" required>
+						<input type="hidden" id="redir" name="redirect" value="<?php echo (isset($_GET['redirect']) && $_GET['redirect'] !== null && $_GET['redirect'] != '' ) ? htmlspecialchars($_GET['redirect']) : ''; ?>">
 						<!--div class="checkbox">
 						  <label>
 							<input type="checkbox" value="remember-me" name="remember"> Tetap masuk

@@ -15,9 +15,9 @@ class User extends CI_Controller {
 		
 		$logged_in = $this->login->log_in($this->input->post('username'), $this->input->post('password'), $this->input->post('remember'));
 		
-		if ( $logged_in && is_array($logged_in)) { // 20170724 | ardhy | revert, itu buat ceck klo return valuenya array, confirm klo itu logged in.
+		if ( $logged_in && is_object($logged_in)) { // 20170724 | ardhy | revert, itu buat ceck klo return valuenya array, confirm klo itu logged in.
 		//if ( $logged_in) { // 20170722 | ilhabibi | take out kondisi kedua is_array karena gak ngerti maksudnya buat apa kondisi ini
-			$redir = ($this->input->post('redirect')) ? $this->input->post('redirect') : base_url('dashboard'); // 20170722 | ilhabibi | di redirect ke halaman dashboard
+			$redir = ($this->input->post('redirect')) ? $this->input->post('redirect') : base_url('admin/home'); // 20170722 | ilhabibi | di redirect ke halaman dashboard
 			header('Location: '.$redir);
 		} else {
 			header( 'Location: '.base_url('').'?redirect='.$this->input->post('redirect').'&fail='.$logged_in );
