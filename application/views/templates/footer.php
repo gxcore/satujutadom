@@ -33,15 +33,18 @@
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 	
-    <script src="<?php echo base_url('assets'); ?>/js/script.js"></script>
+    
+	
 	<script>
-	
+		<?php echo ($id) ? 'var id="'.$id.'"': ''; ?>
 	</script>
-	
 	<?php
-		$page_filename = str_replace("/","-",$page_filename);
-		echo ( file_exists( FCPATH.'assets/js/custom-js-'.$page_filename.'.js' ) ) ? '<script src="'.base_url('assets').'/js/custom-js-'.$page_filename.'.js"></script>' : ''; ?>
-	
+		
+		$page_filename = str_replace("/","-",$page_filename);		
+		echo ( file_exists( FCPATH.'assets/js/custom-js-'.$page_filename.'.js' ) ) ? '<script src="'.base_url('assets').'/js/custom-js-'.$page_filename.'.js"></script>' : ''; 
+		
+	?>
+	<script src="<?php echo base_url('assets'); ?>/js/script.js"></script>
 	
   </body>
 </html>

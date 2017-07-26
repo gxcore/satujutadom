@@ -11,7 +11,7 @@
             <a class="nav-link" href="<?php echo base_url('dashboard/requestor'); ?>">Requestor</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('dashboard/lokasi'); ?>">Lokasi</a>
+            <a class="nav-link" href="<?php echo base_url('dashboard/location'); ?>">Lokasi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('dashboard/status'); ?>">Setup Status</a>

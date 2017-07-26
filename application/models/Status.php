@@ -30,7 +30,8 @@ class status extends CI_Model {
 	
 	public function get_all_sets(){
 		$query = $this->db->get("sets");
-		return $query->result_array();
+		$data['data'] = $query->result();
+		return $data;
 	}
 	
 	public function get_all_status(){
