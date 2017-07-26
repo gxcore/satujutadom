@@ -102,12 +102,12 @@
 					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/location'); ?>">Pengaturan Lokasi</a>
 					  </li>
-					  <li class="nav-item">
+					  <!--li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/manage_status'); ?>">Pengaturan Status</a>
 					  </li>
 					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('admin/manage_user'); ?>">Pengaturan User</a>
-					  </li>
+					  </li-->
 					  <li class=""><hr></li>
 					  <li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('user/logout'); ?>">Log out</a>
@@ -116,12 +116,12 @@
 				<?php endif; ?>
 					<br>
 					<h4>Cek Status Bantuan</h4>
-					<form class="form-signin p-0" action="<?php echo base_url('check/by_requestor'); ?>" method="post">
+					<form class="form-signin p-0" action="<?php echo base_url('check'); ?>" method="post">
 						<label for="nama" class="sr-only">Email address</label>
-						<input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Penerima Bantuan" required>
+						<input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Penerima Bantuan" >
 						Atau
 						<label for="namafasil" class="sr-only">Email address</label>
-						<input type="text" id="namafasil" name="fasil" class="form-control mb-2" placeholder="Nama Fasilitator" required>
+						<input type="text" id="namafasil" name="fasil" class="form-control mb-2" placeholder="Nama Fasilitator" >
 						<!--div class="checkbox">
 						  <label>
 							<input type="checkbox" value="remember-me" name="remember"> Tetap masuk

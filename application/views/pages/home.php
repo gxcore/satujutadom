@@ -1,5 +1,5 @@
 
-	<h1>Sistem Monitoring Bantuan Pemerintah</h1>
+	<h1>Sistem Aplikasi Pengecekan Status Permohonan Bantuan Domain .id</h1>
 	<br>
 	<img class="image-block" src="<?php echo base_url('assets'); ?>/images/1jutadomain-logo.png" alt="1 juta domain"><br>
 	<p class="lead">

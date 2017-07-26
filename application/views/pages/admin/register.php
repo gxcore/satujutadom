@@ -25,7 +25,7 @@
                     <input type="text" class="form-control facilitator_name" disabled="true" "placeholder="Cari Fasilitator" name="facilitator_name"/>
 					<input type="text" class="form-control facilitator_id" style="display:none" name="facilitator_id"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#search-facilitator"></button>
+                        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#search-facilitator"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </span>
 					</div>
 					

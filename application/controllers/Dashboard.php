@@ -103,6 +103,21 @@ class Dashboard extends CI_Controller {
 		}	 
 	}
 	
+	public function view_request(){
+	  	
+		//$this->db->limit(5, ($this->input->get("page",1) - 1) * 5);       
+	   
+		$data = $this->request->get_all( $this->input->post('q') );	
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&  
+		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+		/* your ajax here code will go here */
+		header('Content-type: application/json');
+		//$data['queries'] = $this->input->post('q');
+		echo json_encode($data);
+		exit();
+		}		
+	}
+	
 	
 	public function insert_facilitator(){
 		$fname = $this->input->post("full_name");
@@ -285,18 +300,28 @@ class Dashboard extends CI_Controller {
 		
 		$sets_group = $this->request->get_sets_group_by_sets_id($sets_id);
 				
-		foreach($sets_group as $val){
+		foreach($sets_group as $n => $val){
 			$data = array(
 				'request_id' => $request_id,
 				'set_id' => $sets_id,
 				'status_id' => $val['status_id'],
-				'flag' => 0
+				'flag' => ( ($n == 0) ? 1 : 0 ) // set setelah pendaftaran otomatis status pertama flag TRUE
 			);
 			
 			$this->request->insert_request_status($data);			
 		}
 		redirect('/pages/view/admin/register');
 	}
+		
+	public function update_status_next(){
+		$data = array(
+			'request_id' => $this->input->post("id"),
+			'status_id' => $this->input->post("stId")
+		);		
+		$this->request->update_request_status($data);
+		$this->view_request();
+	}
+	
 	
 }
 	
